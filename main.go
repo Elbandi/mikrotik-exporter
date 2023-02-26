@@ -21,6 +21,7 @@ import (
 	"github.com/ogi4i/mikrotik-exporter/collector/conntrack"
 	"github.com/ogi4i/mikrotik-exporter/collector/dhcp"
 	"github.com/ogi4i/mikrotik-exporter/collector/dhcp_ipv6"
+	"github.com/ogi4i/mikrotik-exporter/collector/firewall"
 	"github.com/ogi4i/mikrotik-exporter/collector/firmware"
 	"github.com/ogi4i/mikrotik-exporter/collector/health"
 	interface_collector "github.com/ogi4i/mikrotik-exporter/collector/interface"
@@ -213,6 +214,10 @@ func buildCollectors(features *config.Features) []collector.FeatureCollector {
 
 	if features.DHCPIPv6 {
 		collectors = append(collectors, dhcp_ipv6.NewCollector())
+	}
+
+	if features.Firewall {
+		collectors = append(collectors, firewall.NewCollector())
 	}
 
 	if features.Firmware {

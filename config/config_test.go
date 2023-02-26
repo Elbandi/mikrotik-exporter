@@ -45,6 +45,7 @@ func TestShouldParse(t *testing.T) {
 		r.True(cfg.Features.BGP)
 		r.True(cfg.Features.DHCP)
 		r.True(cfg.Features.DHCPIPv6)
+		r.True(cfg.Features.Firewall)
 		r.True(cfg.Features.Firmware)
 		r.True(cfg.Features.Health)
 		r.True(cfg.Features.IPPools)
