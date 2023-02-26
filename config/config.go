@@ -27,6 +27,8 @@ type (
 		DHCP bool `yaml:"dhcp,omitempty"`
 		// DHCPIPv6 - enables DHCP IPv6 server metrics collection
 		DHCPIPv6 bool `yaml:"dhcp_ipv6,omitempty"`
+		// Firewall - enables IPv4 firewall metrics collection
+		Firewall bool `yaml:"firewall,omitempty"`
 		// Firmware - enables firmware metrics collection
 		Firmware bool `yaml:"firmware,omitempty"`
 		// Health - enables health metrics collection
