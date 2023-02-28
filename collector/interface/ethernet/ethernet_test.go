@@ -84,7 +84,7 @@ func Test_ethernetCollector_Collect(t *testing.T) {
 					"/interface/ethernet/monitor",
 					"=numbers=ether1",
 					"=once=",
-					"=.proplist=name,status,rate,full-duplex",
+					"=.proplist=name,status,rate,full-duplex,comment",
 				}...).Then(&routeros.Reply{
 					Re: []*proto.Sentence{
 						{
@@ -93,6 +93,7 @@ func Test_ethernetCollector_Collect(t *testing.T) {
 								"status":      "link-ok",
 								"rate":        "1Gbps",
 								"full-duplex": "true",
+								"comment":     "Test",
 							},
 						},
 					},
@@ -101,15 +102,15 @@ func Test_ethernetCollector_Collect(t *testing.T) {
 			want: []prometheus.Metric{
 				prometheus.MustNewConstMetric(
 					metrics.BuildMetricDescription(prefix, "status", "ethernet interface status (up = 1)", labelNames),
-					prometheus.GaugeValue, 1, "device", "address", "ether1",
+					prometheus.GaugeValue, 1, "device", "address", "ether1", "Test",
 				),
 				prometheus.MustNewConstMetric(
 					metrics.BuildMetricDescription(prefix, "rate", "ethernet interface link rate in mbps", labelNames),
-					prometheus.GaugeValue, 1000, "device", "address", "ether1",
+					prometheus.GaugeValue, 1000, "device", "address", "ether1", "Test",
 				),
 				prometheus.MustNewConstMetric(
 					metrics.BuildMetricDescription(prefix, "full_duplex", "ethernet interface full duplex status (full duplex = 1)", labelNames),
-					prometheus.GaugeValue, 1, "device", "address", "ether1",
+					prometheus.GaugeValue, 1, "device", "address", "ether1", "Test",
 				),
 			},
 		},

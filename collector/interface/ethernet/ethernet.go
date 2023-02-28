@@ -12,8 +12,8 @@ import (
 )
 
 var (
-	properties         = []string{"name", "status", "rate", "full-duplex"}
-	labelNames         = []string{"name", "address", "interface"}
+	properties         = []string{"name", "status", "rate", "full-duplex", "comment"}
+	labelNames         = []string{"name", "address", "interface", "comment"}
 	metricDescriptions = map[string]*prometheus.Desc{
 		"status":      metrics.BuildMetricDescription(prefix, "status", "ethernet interface status (up = 1)", labelNames),
 		"rate":        metrics.BuildMetricDescription(prefix, "rate", "ethernet interface link rate in mbps", labelNames),
@@ -105,7 +105,7 @@ func (c *ethernetCollector) collectMetricsForInterface(re *proto.Sentence, ctx *
 		}
 
 		ctx.MetricsChan <- prometheus.MustNewConstMetric(metricDescriptions[property], prometheus.GaugeValue, v,
-			ctx.DeviceName, ctx.DeviceAddress, re.Map["name"],
+			ctx.DeviceName, ctx.DeviceAddress, re.Map["name"], re.Map["comment"],
 		)
 	}
 }
