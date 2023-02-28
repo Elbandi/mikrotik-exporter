@@ -117,7 +117,9 @@ func (c *firewallCollector) collectRuleMetricForProperty(table string, property 
 	for _, p := range tables[table] {
 		val, ok := re.Map[p]
 		if ok && len(val) > 0 {
-			rule = append(rule, p+"="+val)
+			if !(p == "disabled" && val == "false") {
+				rule = append(rule, p+"="+val)
+			}
 		}
 	}
 
