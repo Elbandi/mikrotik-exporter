@@ -39,6 +39,8 @@ type (
 		Routes bool `yaml:"routes,omitempty"`
 		// PoE - enables PoE metrics collection
 		PoE bool `yaml:"poe,omitempty"`
+		// PPP - enables PPP metrics collection
+		PPP bool `yaml:"ppp,omitempty"`
 		// IPPools - enables IP pools metrics collection
 		IPPools bool `yaml:"ip_pools,omitempty"`
 		// SFP - enables SFP modules metrics collection

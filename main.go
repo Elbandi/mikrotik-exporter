@@ -35,6 +35,7 @@ import (
 	"github.com/ogi4i/mikrotik-exporter/collector/netwatch"
 	"github.com/ogi4i/mikrotik-exporter/collector/ospf_neighbors"
 	"github.com/ogi4i/mikrotik-exporter/collector/poe"
+	"github.com/ogi4i/mikrotik-exporter/collector/ppp"
 	"github.com/ogi4i/mikrotik-exporter/collector/resource"
 	"github.com/ogi4i/mikrotik-exporter/collector/routes"
 	"github.com/ogi4i/mikrotik-exporter/collector/wireguard_peers"
@@ -235,6 +236,10 @@ func buildCollectors(features *config.Features) []collector.FeatureCollector {
 
 	if features.PoE {
 		collectors = append(collectors, poe.NewCollector())
+	}
+
+	if features.PPP {
+		collectors = append(collectors, ppp.NewCollector())
 	}
 
 	if features.IPPools {
