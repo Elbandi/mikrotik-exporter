@@ -23,6 +23,8 @@ type (
 	Features struct {
 		// BGP - enables BGP metrics collection
 		BGP bool `yaml:"bgp,omitempty"`
+		// BridgeFirewall - enables bridge firewall metrics collection
+		BridgeFirewall bool `yaml:"bridge_firewall,omitempty"`
 		// DHCP - enables DHCP server metrics collection
 		DHCP bool `yaml:"dhcp,omitempty"`
 		// DHCPIPv6 - enables DHCP IPv6 server metrics collection

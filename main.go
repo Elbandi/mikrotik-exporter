@@ -16,6 +16,7 @@ import (
 
 	"github.com/ogi4i/mikrotik-exporter/collector"
 	"github.com/ogi4i/mikrotik-exporter/collector/bgp"
+	"github.com/ogi4i/mikrotik-exporter/collector/bridge/firewall"
 	"github.com/ogi4i/mikrotik-exporter/collector/bridge/hosts"
 	"github.com/ogi4i/mikrotik-exporter/collector/capsman"
 	"github.com/ogi4i/mikrotik-exporter/collector/conntrack"
@@ -204,6 +205,10 @@ func buildCollectors(features *config.Features) []collector.FeatureCollector {
 
 	if features.BGP {
 		collectors = append(collectors, bgp.NewCollector())
+	}
+
+	if features.BridgeFirewall {
+		collectors = append(collectors, bridge_firewall.NewCollector())
 	}
 
 	if features.Routes {
