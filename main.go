@@ -16,7 +16,7 @@ import (
 
 	"github.com/ogi4i/mikrotik-exporter/collector"
 	"github.com/ogi4i/mikrotik-exporter/collector/bgp"
-	"github.com/ogi4i/mikrotik-exporter/collector/bridge_hosts"
+	"github.com/ogi4i/mikrotik-exporter/collector/bridge/hosts"
 	"github.com/ogi4i/mikrotik-exporter/collector/capsman"
 	"github.com/ogi4i/mikrotik-exporter/collector/conntrack"
 	"github.com/ogi4i/mikrotik-exporter/collector/dhcp"
